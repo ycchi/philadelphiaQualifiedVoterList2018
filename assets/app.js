@@ -58,12 +58,13 @@ const sampleData = {
 
 const tableHeadings = ["ward", "rep", "dem", "other_party", "total"];
 
-// display sampleData 
 const displayTableData = (tableHeadings, data) => {
 
     // declare DOM variables
-    let table = document.getElementById("voterTable")
+    let table = document.getElementById("voterTable");
+    table.setAttribute("class", "table table-striped");
     let thead = document.createElement("thead");
+    thead.setAttribute("class", "thead-light");
     let tbody = document.createElement("tbody");
     let tr = document.createElement("tr");
 
@@ -74,9 +75,7 @@ const displayTableData = (tableHeadings, data) => {
     for (let i = 0; i < tableHeadings.length; i ++) {
         tr.insertCell(i).outerHTML= `<th scope="col">${tableHeadings[i].toUpperCase()}</th>`
         thead.appendChild(tr);
-        thead.setAttribute("class", "thead-light");
         table.prepend(thead);
-
     }
 
     // generate rows
