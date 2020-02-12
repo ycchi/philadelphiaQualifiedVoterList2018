@@ -9,3 +9,8 @@
 
 ## Deployed App
 https://ycchi.github.io/philadelphiaQualifiedVoterList2018/
+
+## Technologies Used
+- html
+- JavaScript
+- Bootstrap
