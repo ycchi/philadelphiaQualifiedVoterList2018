@@ -1,5 +1,3 @@
-console.log('hello world')
-
 const sampleData = {
     "rows":[
        {
@@ -61,7 +59,7 @@ const sampleData = {
 const tableHeadings = ["ward", "rep", "dem", "other_party", "total"];
 
 // display sampleData 
-const getSampleData = (tableHeadings, data) => {
+const displayTableData = (tableHeadings, data) => {
 
     // declare DOM variables
     let table = document.getElementById("voterTable")
@@ -97,6 +95,14 @@ const getSampleData = (tableHeadings, data) => {
 
 }
 
-// document.getElementById("runSampleData").onclick = getSampleData(tableHeadings, sampleData);
-// document.getElementById("runSampleData").onclick = console.log('ive been clicked')
-const clickTest = () => console.log("CLICKED!!!")
+const getApiData = async () => {
+    const apiURL = "https://phl.carto.com/api/v2/sql?q=SELECT+*+FROM+qualified_voter_listing_2018_primary_by_ward&filename=qualified_voter_listing_2018_primary_by_ward&format=json&skipfields=cartodb_id"
+    let response = await fetch(apiURL);
+    if (response.ok) {
+        let result = await response.json();
+        return displayTableData(tableHeadings, result);
+    } else {
+        alert(`HTTP ERROR: ${response.status}`)
+    }
+}
+
